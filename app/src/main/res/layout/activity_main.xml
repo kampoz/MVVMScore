@@ -18,9 +18,11 @@
 
         <EditText
             android:id="@+id/et"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="@{viewmodel.counter}"
+            android:gravity="center"
             android:background="@color/yellow"/>
 
         <TextView
@@ -35,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="+1"/>
+            android:text="Button"/>
 
     </LinearLayout>
 
