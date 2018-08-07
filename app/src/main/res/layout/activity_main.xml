@@ -20,14 +20,14 @@
             android:id="@+id/et"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@{viewmodel.scoreTeamA}"
+            android:text="@{viewmodel.counter}"
             android:background="@color/yellow"/>
 
         <TextView
             android:id="@+id/tvCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewmodel.scoreTeamA}"
+            android:text="@{viewmodel.counter}"
             android:textSize="20sp" />
 
         <Button
