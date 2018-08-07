@@ -1,8 +1,10 @@
 package com.example.programmer.mvvmscore;
 
 import com.example.programmer.mvvmscore.model.Response;
+import com.example.programmer.mvvmscore.model.Value;
 
 import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -28,5 +30,11 @@ public class ApiManager {
 
     public Observable<Response> getGitHubRepos(){
         return buildRetrofit().create(GitHubApi.class).listRepos();
+    }
+
+    public Observable<Value[]> sendRequest() {
+        return getGitHubRepos()
+                .subscribeOn(Schedulers.io())
+                .map( r -> r.values);
     }
 }

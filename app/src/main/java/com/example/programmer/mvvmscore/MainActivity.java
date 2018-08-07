@@ -50,12 +50,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Log.d("LiveData", scoreViewModel.getScore().getValue());
 
-                Observable<Response> responseObservable =  apiManager.getGitHubRepos()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .map( response -> response.values );
+//                Observable<Response> responseObservable =  apiManager.getGitHubRepos()
+//                        .subscribeOn(Schedulers.io())
+//                        .observeOn(AndroidSchedulers.mainThread())
+//                        .map( response -> response.values );
 
 
+                Observable<Value[]> values = apiManager.sendRequest();
 
             }
         });
