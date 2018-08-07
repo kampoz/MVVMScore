@@ -13,6 +13,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.programmer.mvvmscore.databinding.ActivityMainBinding;
+import com.example.programmer.mvvmscore.model.Response;
+import com.example.programmer.mvvmscore.model.Value;
+
+import java.util.Arrays;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAddOne;
     TextView tvCounter;
     EditText et;
+    ApiManager apiManager = new ApiManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +48,15 @@ public class MainActivity extends AppCompatActivity {
         btnAddOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("LiveData", scoreViewModel.getScore().getValue());
+//                Log.d("LiveData", scoreViewModel.getScore().getValue());
+
+                Observable<Response> responseObservable =  apiManager.getGitHubRepos()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .map( response -> response.values );
+
+
+
             }
         });
 
